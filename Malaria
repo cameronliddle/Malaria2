@@ -1,1 +1,25 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+def triangular_membership_function(x, a, b, c):
+    return max(0, min((x - a) / (b - a), (c - x) / (c - b)))
+
+# Define the parameters for the triangular membership function for "Mild" Body Temperature
+a_mild = 36  # Lower bound
+b_mild = 37  # Peak
+c_mild = 38  # Upper bound
+
+# Generate x values
+x_values = np.linspace(35, 39, 1000)
+
+# Calculate the membership values for "Mild" Body Temperature
+membership_values_mild = [triangular_membership_function(x, a_mild, b_mild, c_mild) for x in x_values]
+
+# Plot the membership function
+plt.plot(x_values, membership_values_mild, label='Mild')
+plt.title('Triangular Membership Function for Body Temperature (Mild)')
+plt.xlabel('Body Temperature')
+plt.ylabel('Membership Value')
+plt.legend()
+plt.show()
 
